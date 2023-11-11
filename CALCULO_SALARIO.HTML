@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <title>Cálculo del salario</title>
+  </head>
+  <body>
+    <h1>Cálculo del salario Distribuidora Hernández</h1>
+    <p>Sea bienvenido a este programa que le permitirá calcular el salario de sus empleados de manera eficaz, sírvase de completar los siguientes campos.</p>
+    <form>
+      <b>Ingrese su nombre: </b>
+      <div class="divinput">
+        <input type="text" id="nombre" autofocus>
+      </div>
+      <br>
+      
+      <b>Seleccione el cargo que desempeña:</b>
+      <select name="cargo" class="select" id="cargo">
+        <option value="supervisor">Supervisor</option>
+        <option value="secretaria">Secretaria</option>
+        <option value="mensajero">Mensajero</option>
+      </select>
+      <br>
+      <br>
+      <b>Ingrese la cantidad de horas extra laboradas: </b>
+      <div class="divinput">
+        <input type="number" id="horas_extras" autofocus>
+      </div>
+      <br>
+      <button onclick="seleccionCargo()">Calcular salario</button>
+    </form>
+    <p id="salario"></p>
+
+    <script>
+      function seleccionCargo() {
+        const sueldo_supervisor = 4500;
+        const sueldo_secretaria = 3250;
+        const sueldo_mensajero = 2800;
+        const bonificacion = 250;
+
+        var nombre = document.getElementById("nombre").value;
+        var horas_extras = parseFloat(document.getElementById("horas_extras").value);
+        var cargo = document.getElementById("cargo").value;
+        var salarioElement = document.getElementById("salario");
+
+        salarioElement.innerHTML = "";
+
+        if (cargo === "supervisor") {
+          salarioElement.textContent = "El salario líquido es: " + nombre + " $" + (sueldo_supervisor + bonificacion + horas_extras * 15.75);
+        } else if (cargo === "secretaria") {
+          salarioElement.textContent = "El salario líquido es: " + nombre + " $" + (sueldo_secretaria + bonificacion + horas_extras * 15.75);
+        } else if (cargo === "mensajero") {
+          salarioElement.textContent = "El salario líquido es: " + nombre + " $" + (sueldo_mensajero + bonificacion + horas_extras * 15.75);
+        }
+      }
+    </script>
+  </body>
+</html>
